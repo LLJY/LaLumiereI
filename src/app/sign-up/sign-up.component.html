@@ -1,0 +1,57 @@
+<html [@slide-signup]>
+<ion-toolbar>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="backToLogin()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <span>
+      Sign Up
+    </span>
+  </mat-toolbar>
+</ion-toolbar>
+<ion-content>
+  <form [formGroup]="form">
+    <div  id="input-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" type="text" formControlName="email">
+        <mat-error>Required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username" type="text" formControlName="username">
+        <mat-error>Required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="At least 8 characters" [type]="hidePassword ? 'password' : 'text'"
+          formControlName="password">
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+        <mat-error>Required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput placeholder="Repeat your password" [type]="hide ? 'password' : 'text'"
+          formControlName="passwordRepeat">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error>Required</mat-error>
+      </mat-form-field>
+      <mat-checkbox formControlName="sellerApply">
+        Apply as Seller?
+      </mat-checkbox>
+      <mat-checkbox formControlName="isAgree">
+        Agree to our terms and conditons
+      </mat-checkbox>
+      <div class="loader" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+        <p>Loading...</p>
+      </div>
+      <button type="submit" [disabled]="!form.valid || isLoading" color="primary" mat-raised-button class="done-button" (click)="signup()">
+        DONE
+      </button>
+    </div>
+  </form>
+</ion-content>
+
+</html>

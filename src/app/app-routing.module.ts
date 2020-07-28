@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,22 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'login-sign-up',
+    loadChildren: () => import('./login-sign-up/login-sign-up.module').then( m => m.LoginSignUpPageModule)
+  },
+  {
+    path: 'main',
+    loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'add-edit-listings',
+    loadChildren: () => import('./add-edit-listings/add-edit-listings.module').then( m => m.AddEditListingsPageModule)
+  }
 ];
 
 @NgModule({

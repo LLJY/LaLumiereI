@@ -1,0 +1,40 @@
+#app-title{
+    padding-top: 5%;
+    text-align: center;
+    font-size: xx-large;
+}
+#input-field{
+    padding-top: 5%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-left: 8%;
+    padding-right: 8%;
+}
+#page{
+    display: flex;
+    flex-direction: column;
+}
+.login-button-container{
+    width: 100%;
+    height: 60px;
+    padding-top: 6%;
+}
+.login-button{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+}
+.signup-button{
+    @extend .login-button;
+    margin-top: 
+    10%;
+}
+#spinner-container{
+    display: inline-block; 
+    text-align: center;
+}
+mat-spinner{
+    margin: 0 auto;
+}  

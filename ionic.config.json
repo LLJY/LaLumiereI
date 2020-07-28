@@ -1,5 +1,7 @@
 {
   "name": "LaLumiere",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

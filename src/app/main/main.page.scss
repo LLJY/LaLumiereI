@@ -1,0 +1,120 @@
+@import '../../global.scss';
+$primary: map-get($theme, primary);
+$accent: map-get($theme, accent);
+@keyframes animate-item-open{
+    from{
+        color: black;
+        padding: 3%;
+        font-size: xx-large;
+    }
+    to{
+        padding: 5%;
+        color: mat-color($accent);
+        font-size: 325%;
+    }
+}
+@keyframes animate-arrows{
+    0%{
+        opacity: 0.1;
+        transform: translate(-50%, 0);
+    }
+    50%{
+        opacity: 0.8;
+        transform: translate(-50%, 10%);
+    }
+    100%{
+        opacity: 0.1;
+        transform: translate(-50%, 0);
+    }
+}
+@keyframes animate-item-close{
+    from{
+        color: mat-color($accent);
+        padding: 5%;
+        font-size: 325%;
+    }
+    to{
+        padding: 3%;
+        color: black;
+        font-size: xx-large;
+    }
+}
+.arrow{
+    font-size: xx-large;
+}
+.arrows{
+    display: block;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 9%;
+    opacity: 0;
+    animation-name: animate-arrows;
+    animation-duration: 1250ms;
+    animation-iteration-count: infinite;
+}
+.top-arrow{
+    @extend .arrow;
+}
+.bottom-arrow{
+    @extend .arrow;
+}
+.cupertino-pane-header{
+    margin-top: 4%;
+    height: 9%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.profile-button-img{
+    width: 100%;
+    height: 100%;
+}
+.profile-button{
+    margin-left: 3%;
+    margin-top: -2%;
+}
+.page-title{
+    font-size: x-large;
+    text-align: center;
+    padding: 5%;
+    margin-top: -4%;
+}
+.search-button{
+    margin-right: 2%;
+    margin-top: -2%;
+}
+
+.menu-items.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.menu-item-button{
+    animation-name: animate-item-close;
+    animation-duration: 300ms;
+    text-align: left;
+    width: 100%;
+    font-size: xx-large;
+    padding: 3%;
+}
+.menu-item-button-selected{
+    @extend .menu-item-button;
+    animation-name: animate-item-open;
+    animation-duration: 300ms;
+    padding: 5%;
+    font-size: 325%;
+    color: mat-color($accent);
+}
+.menu-item-button-transient{
+    animation-name: animate-item-close;
+    animation-duration: 300ms;
+    @extend .menu-item-button;
+    
+}
+.menu-item-title{
+    margin-left: 10%;
+    font-size: 20px;
+}

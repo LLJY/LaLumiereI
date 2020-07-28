@@ -1,0 +1,43 @@
+<ion-content style="max-height: 91%;">
+  <router-outlet></router-outlet>
+</ion-content>
+<div class="arrows">
+  <p class="top-arrow">^</p>
+</div>
+<div class="cupertino-pane">
+  
+  <div class="cupertino-pane-header">
+    <button mat-icon-button class="profile-button">
+      <img class="profile-button-img"
+        src="https://lh3.googleusercontent.com/proxy/NaXRYEIv-1FENPNi2C77vdHWkZBSnhdfP8V4MZqSAx-77lhugetVhFuzsYf_Eu6bg7LVgwUX3XpNiMdNyHImT8d1TQdZZwOXd-k-Li9_gzkIrw6O5f1PjO1dBwtI5tZj5YJv6VvcXg">
+    </button>
+    <span class="page-title" (click)="open()">{{pages[activePageIndex].title}}</span>
+    <button mat-icon-button class="search-button">
+      <mat-icon [inline]="true" style="font-size: 32px;">
+        search
+      </mat-icon>
+    </button>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="menu-items-container">
+    <div *ngFor="let page of pages; let i = index" class="menu-item">
+      <button (click)="changeRoute(i)" *ngIf="activePageIndex != i; else selectedButton" mat-button
+        class="menu-item-button">
+        <mat-icon [inline]="true" class="menu-item-icon">
+          {{page.icon}}
+        </mat-icon>
+        <span class="menu-item-title">{{page.title}}</span>
+      </button>
+      <ng-template #selectedButton>
+        <button (click)="changeRoute(i)" mat-button class="menu-item-button-selected">
+          <mat-icon [inline]="true" class="menu-item-icon">
+            {{page.icon}}
+          </mat-icon>
+          <span class="menu-item-title">{{page.title}}</span>
+        </button>
+      </ng-template>
+      <mat-divider>
+      </mat-divider>
+    </div>
+  </div>
+</div>

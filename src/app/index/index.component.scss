@@ -1,0 +1,28 @@
+.category{
+    border-radius: 40px;
+    width: 6em;
+    height: 2em;
+    margin: 4%;
+    animation: collapsing-in 1s ;
+    animation-timing-function: ease-out;
+}
+@keyframes collapsing-in{
+    0%{
+        transform: translate(200%);
+    }
+    100%{
+        transform: translate(0%);
+    }
+}
+.categories-section{
+    will-change: contents;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    column-gap: 4%;
+}
+html{
+    font-size: 100%;
+}

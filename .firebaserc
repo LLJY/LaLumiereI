@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "la-lumire": {
+      "hosting": {
+        "app": [
+          "la-lumire"
+        ]
+      }
+    }
+  }
+}
