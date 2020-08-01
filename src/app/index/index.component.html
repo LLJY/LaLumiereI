@@ -5,12 +5,12 @@
         Hot Items 🔥
       </p>
       <div class="section">
-        <app-item-card *ngFor="let item of hotItems" [item]="item"></app-item-card>
+        <app-item-card *ngFor="let item of itemsService.hotItems" [item]="item"></app-item-card>
       </div>
     </b>
     <mat-divider [inset]="true"></mat-divider>
   <div class="categories-section">
-    <mat-card class="category" *ngFor="let category of categories"><mat-card-title class="category-title">{{category}}</mat-card-title></mat-card>
+    <mat-card class="category" *ngFor="let category of itemsService.categories"><mat-card-title class="category-title">{{category}}</mat-card-title></mat-card>
   </div>
   <mat-divider [inset]="true"></mat-divider>
     <b>
@@ -19,7 +19,7 @@
       </p>
     </b>
     <div class="section">
-      <app-item-card *ngFor="let item of followItems" [item]="item"></app-item-card>
+      <app-item-card *ngFor="let item of itemsService.followItems" [item]="item"></app-item-card>
     </div>
     <mat-divider [inset]="true"></mat-divider>
     <b>
@@ -28,7 +28,7 @@
       </p>
     </b>
     <div class="section">
-      <app-item-card *ngFor="let item of interestItems" [item]="item"></app-item-card>
+      <app-item-card *ngFor="let item of itemsService.interestItems" [item]="item"></app-item-card>
     </div>
 </div>
 
