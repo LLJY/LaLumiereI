@@ -10,7 +10,7 @@
     </b>
     <mat-divider [inset]="true"></mat-divider>
   <div class="categories-section">
-    <mat-card class="category" *ngFor="let category of itemsService.categories"><mat-card-title class="category-title">{{category}}</mat-card-title></mat-card>
+    <mat-card matRipple class="category" *ngFor="let category of itemsService.categories"><mat-card-title class="category-title">{{category}}</mat-card-title></mat-card>
   </div>
   <mat-divider [inset]="true"></mat-divider>
     <b>
