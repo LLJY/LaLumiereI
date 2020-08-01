@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: 'add-edit-listings',
     loadChildren: () => import('./add-edit-listings/add-edit-listings.module').then( m => m.AddEditListingsPageModule)
+  },
+  {
+    path: 'individual-item',
+    loadChildren: () => import('./individual-item/individual-item.module').then( m => m.IndividualItemPageModule)
   }
 ];
 
