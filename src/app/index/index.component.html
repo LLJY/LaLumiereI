@@ -1,12 +1,18 @@
 <html>
 <div class="content">
-  <div class="section">
-    <b><p>
-      Hot Items 🔥
-    </p>
-    <app-item-card></app-item-card>
-  </b>
-  </div>
+    <b>
+      <p class="title">
+        Hot Items 🔥
+      </p>
+      <div class="section">
+        <app-item-card></app-item-card>
+        <app-item-card></app-item-card>
+        <app-item-card></app-item-card>
+        <app-item-card></app-item-card>
+        <app-item-card></app-item-card>
+      </div>
+    </b>
+    <mat-divider [inset]="true"></mat-divider>
   <div class="categories-section">
     <mat-card class="category">example cat</mat-card>
     <mat-card class="category">example cat</mat-card>
@@ -21,16 +27,24 @@
     <mat-card class="category">example cat</mat-card>
     <mat-card class="category">example cat</mat-card>
   </div>
-  <div class="section">
-    <p>
-      People you follow 👀
-    </p>
-  </div>
-  <div class="section">
-    <p>
-      Items you might be interested in 🤩
-    </p>
-  </div>
-
+  <mat-divider [inset]="true"></mat-divider>
+    <b>
+      <p class="title">
+        People you follow 👀
+      </p>
+    </b>
+    <div class="section">
+      <app-item-card></app-item-card>
+    </div>
+    <mat-divider [inset]="true"></mat-divider>
+    <b>
+      <p class="title">
+        Items you might be interested in 🤩
+      </p>
+    </b>
+    <div class="section">
+      <app-item-card></app-item-card>
+    </div>
 </div>
+
 </html>

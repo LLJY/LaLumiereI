@@ -6,6 +6,19 @@
     animation: collapsing-in 1s ;
     animation-timing-function: ease-out;
 }
+app-item-card{
+    padding: 2%;
+}
+.title{
+    margin-left: 2%;
+    margin-top: 2%;
+    font-size: 130%;
+}
+.section{
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+}
 @keyframes collapsing-in{
     0%{
         transform: translate(200%);
@@ -15,6 +28,7 @@
     }
 }
 .categories-section{
+    padding: 2%;
     will-change: contents;
     overflow: auto;
     display: grid;
