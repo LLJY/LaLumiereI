@@ -1,9 +1,107 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>individualItem</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-slides class="slides">
+    <ion-slide *ngFor="let image of item.images">
+      <img class="image" src={{image}}>
+    </ion-slide>
+  </ion-slides>
+  <ion-content>
+    <div class="information">
+      <b>
+        <p class="title">
+          {{item.title}}
+        </p>
+        <!-- use the currency pipe for price. -->
+        <p class="price">
+          {{item.price|currency:'USD'}}
+        </p>
+      </b>
+      <div class="seller-info">
+        <div class="seller-image-button-container">
+          <button mat-icon-button class="seller-image-button">
+            <img class="seller-image" src="{{item.sellerImageURL}}">
+          </button>
+        </div>
+        <p class="seller-name">{{item.sellerName}}</p>
+      </div>
+      <mat-divider>
+      </mat-divider>
+      <div class="user-liked">
+        <button mat-icon-button>
+          <mat-icon *ngIf="item.isLiked" color="warn">
+            favorite
+          </mat-icon>
+          <mat-icon *ngIf="!item.isLiked">
+            favorite_outline
+          </mat-icon>
+        </button>
+        <span>
+          {{item.Likes}} Likes
+        </span>
+      </div>
+      <div class="new">
+        <mat-icon class="indicator">
+          info_outline
+        </mat-icon>
+        <span>
+          {{item.isUsed ? "Used": "New"}}
+        </span>
+      </div>
+      <div class="category">
+        <mat-icon class="indicator">
+          category
+        </mat-icon>
+        <span>
+          {{item.category}}
+        </span>
+      </div>
+      <div class="description">
+        <mat-icon class="indicator">
+          description
+        </mat-icon>
+        <span>
+          Description
+        </span>
+        <p class="description-text">
+          {{item.description}}
+        </p>
+      </div>
+      <b>
+        <p class="title">Transaction Information</p>
+      </b>
+      <div class="location">
+        <mat-icon class="indicator">
+          location_on
+        </mat-icon>
+        <span>
+          {{item.location}}
+        </span>
+      </div>
+      <div class="payment">
+        <mat-icon class="indicator">
+          credit_card
+        </mat-icon>
+        <span>
+          {{item.procurementInformation}}
+        </span>
+      </div>
+      <b>
+        <p class="title">See more like this</p>
+      </b>
+    </div>
+    <div class="see-more-section">
 
-<ion-content>
-
-</ion-content>
+    </div>
+   
+  </ion-content>
+  <!-- TODO USE NGIF TO OPEN EDIT DIALOG -->
+  <div class="bottom-pane">
+    <button mat-button (click)="onBackPressed()">
+      <mat-icon>
+        arrow_back
+      </mat-icon>
+    </button>
+    <span class="pane-title">
+      View Item
+    </span>
+  </div>
+</ion-app>

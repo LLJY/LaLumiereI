@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { IndividualItemPageRoutingModule } from './individual-item-routing.module';
 
 import { IndividualItemPage } from './individual-item.page';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    IndividualItemPageRoutingModule
+    IndividualItemPageRoutingModule,
+    MaterialModule,
   ],
   declarations: [IndividualItemPage]
 })

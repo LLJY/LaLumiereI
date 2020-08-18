@@ -1,38 +1,41 @@
 <html [@slide-login]>
-<div id="page">
-  <div id="app-title">
-    <img src="assets/icon.png">
-    <p class="primary-color" style="font-family: Bradley">
-      La Lumière
-    </p>
-  </div>
-  <form>
-    <div [formGroup]="form" id="input-field" (ngSubmit)="login()">
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" type="text" formControlName="email">
-        <mat-error>Required</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline" id="passwordf">
-        <mat-label>Password</mat-label>
-        <input type="password" matInput placeholder="Enter your password" formControlName="password">
-        <mat-error>Required</mat-error>
-      </mat-form-field>
-      <div class="login-button-container">
-        <button *ngIf="!isLoading" type="submit" [disabled]="!form.valid" color="primary" mat-raised-button class="login-button" (click)="login()">
-          Login
-        </button>
-        <div id="spinner-container" *ngIf="isLoading">
-        <mat-spinner style="margin: 0 auto;">
-        </mat-spinner>
-        <p>Loading...</p>
-      </div>
-      </div>
-      <button *ngIf="!isLoading" mat-button color="primary" class="signup-button" (click)="toSignUp()">
-        NOT YET A MEMBER? JOIN US!
-      </button>
+<ion-app>
+  <div id="page">
+    <div id="app-title">
+      <img src="assets/icon.png">
+      <p class="primary-color" style="font-family: Bradley">
+        La Lumière
+      </p>
     </div>
-  </form>
-</div>
+    <form>
+      <div [formGroup]="form" id="input-field" (ngSubmit)="login()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" type="text" formControlName="email">
+          <mat-error>Required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" id="passwordf">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput placeholder="Enter your password" formControlName="password">
+          <mat-error>Required</mat-error>
+        </mat-form-field>
+        <div class="login-button-container">
+          <button *ngIf="!isLoading" type="submit" [disabled]="!form.valid" color="primary" mat-raised-button
+            class="login-button" (click)="login()">
+            Login
+          </button>
+          <div id="spinner-container" *ngIf="isLoading">
+            <mat-spinner style="margin: 0 auto;">
+            </mat-spinner>
+            <p>Loading...</p>
+          </div>
+        </div>
+        <button *ngIf="!isLoading" mat-button color="primary" class="signup-button" (click)="toSignUp()">
+          NOT YET A MEMBER? JOIN US!
+        </button>
+      </div>
+    </form>
+  </div>
+</ion-app>
 
 </html>

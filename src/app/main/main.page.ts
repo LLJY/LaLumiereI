@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CupertinoPane, CupertinoSettings } from 'cupertino-pane';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -11,7 +12,7 @@ export class MainPage implements OnInit {
   // TODO add check if user is seller or not.
   public pages = [new NavigationComponent("Manage Listings", "manage", "edit"), new NavigationComponent("Track Orders", "trackorders", "location_on"), new NavigationComponent("Home", "", "home"), new NavigationComponent("Inbox", "inbox", "inbox"), new NavigationComponent("Liked Items", "liked", "favorite"), new NavigationComponent("Subscribed Categories", "subscribed", "list"), new NavigationComponent("Settings", "settings", "settings"), new NavigationComponent("About", "about", "info")];
   public activePageIndex = 2;
-  constructor(private router: Router) {
+  constructor(private router: Router, private navigation: NavController) {
 
   }
   public open(){

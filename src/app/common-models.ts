@@ -1,6 +1,6 @@
 
 export class Item {
-    constructor(public listingId: string, public title: string, public sellerName: string, public sellerUID: string, public sellerImageURL: string, public Likes: number, public listedTime: Date, public price: number, public rating: number, public description: string, public transactionInformation: string, public procurementInformation: string, public category: string, public stock: number, public images: Array<string>, public isAdvert: boolean, public isUsed: boolean, public location: string) {
+    constructor(public listingId: string, public title: string, public sellerName: string, public sellerUID: string, public sellerImageURL: string, public Likes: number, public listedTime: Date, public price: number, public rating: number, public description: string, public transactionInformation: string, public procurementInformation: string, public category: string, public stock: number, public images: Array<string>, public isAdvert: boolean, public isLiked: boolean, public isUsed: boolean, public location: string) {
 
     }
 }

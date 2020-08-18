@@ -9,7 +9,7 @@
     </b>
   </div>
   <div class="section">
-    <app-item-card *ngFor="let item of itemsService.hotItems" [item]="item"></app-item-card>
+    <app-item-card *ngFor="let item of itemsService.hotItems" [item]="item" (click)="openItemPage(item)"></app-item-card>
   </div>
   <mat-divider [inset]="true"></mat-divider>
   <div class="categories-section">
@@ -27,7 +27,7 @@
     </b>
   </div>
     <div class="section">
-      <app-item-card *ngFor="let item of itemsService.followItems" [item]="item"></app-item-card>
+      <app-item-card *ngFor="let item of itemsService.followItems" [item]="item" (click)="openItemPage(item)"></app-item-card>
     </div>
   <mat-divider [inset]="true"></mat-divider>
   <div class="title-container">
@@ -39,7 +39,7 @@
     </b>
   </div>
   <div class="section">
-    <app-item-card-big *ngFor="let item of itemsService.interestItems" [item]="item"></app-item-card-big>
+    <app-item-card-big *ngFor="let item of itemsService.interestItems" [item]="item" (click)="openItemPage(item)"></app-item-card-big>
   </div>
 </div>
 

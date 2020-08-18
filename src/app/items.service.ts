@@ -30,8 +30,8 @@ export class ItemsService {
   getItems = async()=>{
     await this.getHotItems();
     await this.getCategories();
-    await this.getFollowItems();
-    await this.getInterestItems();
+    //await this.getFollowItems();
+    //await this.getInterestItems();
   }
   getHotItems = async()=>{
     let unProcessed = await this.http.get(`${this.apiUrl}/getHottestItems`).toPromise();
@@ -42,7 +42,7 @@ export class ItemsService {
   processItemJson(jsonArray: any): Item[]{
     let items = new Array<Item>();
     jsonArray.forEach(json => {
-      items.push(new Item(json.ListingID, json.Title, json.sellerName, json.sellerUID, json.sellerImageURL, json.Likes, new Date(json.ListedTime), json.Price, json.Rating, json.Description, json.TransactionInformation, json.ProcurementInformation, json.Category, json.Stock, json.Images, json.isAdvert, json.isUsed, json.location));
+      items.push(new Item(json.ListingID, json.Title, json.sellerName, json.sellerUID, json.sellerImageURL, json.Likes, new Date(json.ListedTime), json.Price, json.Rating, json.Description, json.TransactionInformation, json.ProcurementInformation, json.Category, json.Stock, json.Images, json.isAdvert,json.isLiked, json.isUsed, json.location));
     });
     return items;
   }
