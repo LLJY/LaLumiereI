@@ -1,15 +1,10 @@
 
-<mat-card matRipp>
+<mat-card matRipple>
   <img mat-card-image src="{{item.images[0]}}" loading="lazy" alt="/assets/placeholder-image.png"> 
   <mat-card-title class="title">
-    <span class="marquee">
+    <div [ngClass]="{'marquee':(item.title.length > 9)}">
     {{item.title}}
-  </span>
-    <button class="fav_button" mat-icon-button>
-      <mat-icon>
-        favorite_border
-      </mat-icon>
-    </button>
+    </div>
   </mat-card-title>
   <mat-card-subtitle>
     {{item.price | currency:"USD"}}
@@ -19,5 +14,10 @@
       <img class="profile-image" src="{{item.sellerImageURL}}">
     </button>
     {{item.sellerName}}
+    <button class="fav_button" mat-icon-button>
+      <mat-icon>
+        favorite_border
+      </mat-icon>
+    </button>
   </mat-card-footer>
 </mat-card>

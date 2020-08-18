@@ -9,14 +9,28 @@
 app-item-card{
     padding: 2%;
 }
+.title-container{
+    width: 100%;
+    margin-left: 2%;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+}
+.more-button{
+    left: 100%
+}
+.more-button-interest{
+    left: 4.8%;
+}
+.more-button-follow{
+    left: 50.8%;
+}
 .category-title{
     font-size: 100%;
     text-align: center;
     opacity: 80%;
 }
 .title{
-    margin-left: 2%;
-    margin-top: 2%;
     font-size: 130%;
 }
 .section{
@@ -26,9 +40,13 @@ app-item-card{
 }
 @keyframes collapsing-in{
     0%{
+        width: 0%;
+        height: 0%;
         transform: translate(200%);
     }
     100%{
+        width: 6em;
+        height: 2em;
         transform: translate(0%);
     }
 }

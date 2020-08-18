@@ -11,14 +11,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFirestoreModule} from '@angular/fire/firestore';
+import {
+  AngularFireFunctionsModule,
+} from '@angular/fire/functions';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { ItemCardComponent } from 'src/item-card/item-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, MaterialModule, AngularFireAuthModule, AngularFireModule, AngularFireDatabaseModule, AngularFirestoreModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, AngularFireFunctionsModule],
   providers: [
     FirebaseX,
     StatusBar,

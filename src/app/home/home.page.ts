@@ -15,7 +15,7 @@ export class HomePage {
     loadingController.create(
       {
         message: "Please Wait...",
-        duration: 5000
+        duration: Infinity
       }
     ).then(result => {
       console.log(result);
@@ -23,6 +23,7 @@ export class HomePage {
         result.present().then(() => {
           loginService.isLoggedIn().then(loggedIn => {
             result.remove();
+            console.log("hello");
             // if user is not logged in, redirect to login/signup page.
             console.log(loggedIn);
             if (!loggedIn) {

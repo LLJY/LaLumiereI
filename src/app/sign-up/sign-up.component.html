@@ -20,6 +20,11 @@
         <mat-error>Required</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" type="text" formControlName="name">
+        <mat-error>Required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input type="password" matInput placeholder="At least 8 characters" [type]="hidePassword ? 'password' : 'text'"
           formControlName="password">

@@ -16,8 +16,8 @@ export class IndexComponent implements OnInit {
     // call the get items function
     itemsService.getItems().then(()=>{
       //TODO remove shimmer
-    }
-    )};
+    });
+  }
 
   ngOnInit() {
    

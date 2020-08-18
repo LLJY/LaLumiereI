@@ -19,6 +19,8 @@ import { SettingsComponent } from '../settings/settings.component';
 import { AboutComponent } from '../about/about.component';
 import { IndexComponent } from '../index/index.component';
 import { ItemCardComponent } from 'src/item-card/item-card.component';
+import { ItemCardBigComponent } from '../item-card-big/item-card-big.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -26,8 +28,9 @@ import { ItemCardComponent } from 'src/item-card/item-card.component';
     FormsModule,
     IonicModule,
     MainPageRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
-  declarations: [MainPage, ManageListingsComponent, TrackOrdersComponent, HomePage, InboxComponent,IndexComponent, LikedItemsComponent, SubscribedCategoriesComponent, SettingsComponent, AboutComponent, ItemCardComponent]
+  declarations: [MainPage, ManageListingsComponent, TrackOrdersComponent, HomePage, InboxComponent,IndexComponent, LikedItemsComponent, SubscribedCategoriesComponent, SettingsComponent, AboutComponent, ItemCardComponent, ItemCardBigComponent]
 })
 export class MainPageModule { }

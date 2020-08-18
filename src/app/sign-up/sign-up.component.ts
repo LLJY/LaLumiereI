@@ -33,6 +33,7 @@ export class SignUpComponent implements OnInit {
     this.form = fb.group({
       "email" : ["", [Validators.required, Validators.email]],
       "username" : ["", Validators.required],
+      "name": ["", Validators.required],
       "password" : passwordValidator,
       "passwordRepeat": passwordValidator,
       "sellerApply" : [false, Validators.required],
@@ -41,7 +42,7 @@ export class SignUpComponent implements OnInit {
   }
   public signup(){
     this.isLoading = true;
-    this.service.signUp(this.form.get("email").value, this.form.get("password").value, this.form.get("username").value).then(result=>{
+    this.service.signUp(this.form.get("email").value, this.form.get("password").value, this.form.get("username").value, this.form.get("name").value).then(result=>{
       if(result != "success"){
         // result has a descriptive error message
         this.isLoading = false;
