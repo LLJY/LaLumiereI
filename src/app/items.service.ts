@@ -60,7 +60,6 @@ export class ItemsService {
     let unProcessed = await this.http.post(`${this.apiUrl}/getItemBySuggestion`, formData).toPromise();
     this.hotItems = this.processItemJson(unProcessed);
   }
-  // INCOMPLETE, needs uid
   getCategories = async()=>{
     let categories: any = await this.http.get(`${this.apiUrl}/getCategories`).toPromise();
     categories.sort();
