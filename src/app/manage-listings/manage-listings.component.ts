@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsService } from '../items.service';
 
 @Component({
   selector: 'app-manage-listings',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageListingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public itemsService: ItemsService) {
+    // get items on startup of the component
+    itemsService.getManagedItems();
+   }
 
   ngOnInit() {}
 
