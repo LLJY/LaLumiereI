@@ -1,0 +1,27 @@
+<mat-card matRipple (click)="itemsService.openItemPage(item)">
+  <img mat-card-image src="{{item.images[0]}}" loading="lazy" alt="/assets/placeholder-image.png"> 
+  <mat-card-title class="title">
+    <div class="divider">
+    <span [ngClass]="{'marquee':(item.title.length > 18)}" class="marquee">
+    {{item.title}}
+  </span>
+</div>
+  <span>
+    {{item.stock}} in Stock
+  </span>
+  <button class="fav_button" mat-icon-button>
+    <mat-icon>
+      favorite_border
+    </mat-icon>
+  </button>
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{item.price | currency:"USD"}}
+  </mat-card-subtitle>
+  <mat-card-footer>
+    <button class="profile-button" mat-icon-button>
+      <img class="profile-image" src="{{item.sellerImageURL}}">
+    </button>
+    {{item.sellerName}}
+  </mat-card-footer>
+</mat-card>

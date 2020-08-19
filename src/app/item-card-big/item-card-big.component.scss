@@ -1,0 +1,59 @@
+mat-card{
+    width: 11.5em;
+}
+mat-card-title{
+    font-size: 120%;
+}
+mat-card-subtitle{
+    margin-left: -8%;
+    margin-bottom: -2%;
+    margin-top: -20%;
+}
+.marquee{
+    white-space: nowrap;
+    animation : slide 5s linear infinite;
+}
+.divider{
+    display: flex;
+    flex-direction: row;
+}
+@keyframes slide {
+    0%{
+        transform: translateX(-150%)
+      }
+    15%{
+        transform: translateX(-100%);
+      }
+    30%{
+        transform: translateX(-50%);
+    }
+    45%{
+        transform: translateX(0%);
+    }
+    60% {
+        transform: translateX(50%)
+    }
+    75%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(150%);
+    }
+}
+.title{
+    margin-left: -8%;
+}
+.fav_button{
+    left: 46%;
+    margin-top: -3%;
+}
+.profile-button{
+    width: 14%;
+    height: 14%;
+}
+.profile-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
