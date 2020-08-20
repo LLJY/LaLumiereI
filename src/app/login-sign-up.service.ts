@@ -3,12 +3,16 @@ import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import * as admin from 'firebase-admin';
 import { async } from '@angular/core/testing';
 import { FirebaseApp } from '@angular/fire';
+import { AngularFireFunctions } from '@angular/fire/functions';
+import { UserInfo } from 'os';
+import { User } from './common-models';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginSignUpService {
   public userID: any = null;
-  constructor(private firebase: FirebaseX) {
+  public userInfo: User;
+  constructor(private firebase: FirebaseX, private functions: AngularFireFunctions) {
     firebase.signOutUser();
   }
   /**
@@ -18,7 +22,8 @@ export class LoginSignUpService {
     try {
       var id: any = await this.firebase.getCurrentUser();
       this.userID = id.uid;
-      console.log(this.userID);
+      await this.getUserInfo();
+      // TODO get user information here.
       return true;
     } catch (ex) {
       return false;
@@ -58,5 +63,8 @@ export class LoginSignUpService {
   }
   public getUserInfo = async () => {
     // TODO  implement this in firebase functions
+    const request = this.functions.httpsCallable("getUserInfo");
+    this.userInfo = await request({userID: this.userID}).toPromise();
+    console.log(this.userInfo);
   }
 }
