@@ -1,0 +1,85 @@
+<ion-app>
+  <div class="content">
+    <div class="images">
+      <ng-container *ngIf="modifiedItem.images.length > 0; else noImageBlock;">
+        <img class="post-images" *ngFor="let imageBase64 of modifiedItem.images let i=index" [src]="imageBase64" (click)="deleteImage(i)">
+      </ng-container>
+      <ng-template #noImageBlock>
+        No images added...
+      </ng-template>
+    </div>
+    <button mat-raised-button class="image-button" (click)="selectImage()">
+      + Add An Image
+</button>
+    <mat-divider></mat-divider>
+    <!-- form for adding/ editing item -->
+    <form [formGroup]="form" >
+      <div class="reactive-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" [(ngModel)]="modifiedItem.title">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category" [(ngModel)]="modifiedItem.category">
+            <mat-option *ngFor="let category of itemsService.categories" [value]="category">{{category}}</mat-option>
+          </mat-select>>
+        </mat-form-field>
+        <p>Item Condition</p>
+        <mat-radio-group formControlName="condition" aria-label="Item Condition" style="display: block;" [(ngModel)]="modifiedItem.isUsed">
+          <mat-radio-button [value]="false">New</mat-radio-button>
+          <mat-radio-button [value]="true">Used</mat-radio-button>
+        </mat-radio-group>          
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <input matInput formControlName="price" [(ngModel)]="modifiedItem.price">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Available Stock</mat-label>
+          <input matInput formControlName="stock" [(ngModel)]="modifiedItem.stock">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" [(ngModel)]="modifiedItem.description"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Location</mat-label>
+          <input matInput formControlName="location" [(ngModel)]="modifiedItem.location">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Payment Type</mat-label>
+          <mat-select formControlName="payment-type" [(ngModel)]="modifiedItem.transactionInformation">
+            <mat-option *ngFor="let payment of itemsService.paymentTypes" [value]="payment">{{payment}}</mat-option>
+          </mat-select>>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>How to get this</mat-label>
+          <mat-select formControlName="procurement-type" [(ngModel)]="modifiedItem.procurementInformation">
+            <mat-option *ngFor="let procurement of itemsService.procurementTypes" [value]="procurement">{{procurement}}</mat-option>
+          </mat-select>>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <!-- TODO USE NGIF TO OPEN EDIT DIALOG -->
+  <div class="bottom-pane">
+    <button mat-icon-button (click)="onBackPressed()" class="close-button">
+      <mat-icon>
+        close
+      </mat-icon>
+    </button>
+    <span *ngIf="item == null; else editItemText;" class="pane-title">
+      Add Item
+    </span>
+    <ng-template #editItemText>
+      <span *ngIf="item == null; else editItemText;" class="pane-title">
+        Edit Item
+      </span>
+    </ng-template>
+    <button mat-icon-button (click)="onCompleteClick()" class="done-button">
+      <mat-icon class="check">
+        check
+      </mat-icon>
+    </button>
+  </div>
+</ion-app>

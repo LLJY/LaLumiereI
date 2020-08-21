@@ -9,7 +9,7 @@
   <div class="cupertino-pane-header">
     <button mat-icon-button class="profile-button">
       <img class="profile-button-img"
-        src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png">
+        [src]="loginService.userInfo.ImageURL">
     </button>
     <span class="page-title" (click)="open()">{{pages[activePageIndex].title}}</span>
     <button mat-icon-button class="search-button">

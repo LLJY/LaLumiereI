@@ -4,7 +4,7 @@
       <img class="image" src={{image}}>
     </ion-slide>
   </ion-slides>
-  <ion-content>
+  <div class="content">
     <div class="information">
       <b>
         <p class="title">
@@ -92,7 +92,7 @@
 
     </div>
    
-  </ion-content>
+  </div>
   <!-- TODO USE NGIF TO OPEN EDIT DIALOG -->
   <div class="bottom-pane">
     <button mat-button (click)="onBackPressed()">
@@ -100,8 +100,14 @@
         arrow_back
       </mat-icon>
     </button>
-    <span class="pane-title">
+    <span *ngIf="item.sellerUID != loginService.userID; else sellerBlock" class="pane-title">
       View Item
     </span>
+    <ng-template #sellerBlock>
+    <div class="buttons">
+      <button class="button" mat-raised-button (click)="editItem()" color="primary">Edit Item</button>
+      <button class="button" mat-raised-button (click)="deleteItem()" color="warn">Delete Item</button>
+    </div>
+    </ng-template>
   </div>
 </ion-app>

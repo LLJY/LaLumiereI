@@ -1,5 +1,5 @@
 
-<mat-card matRipple>
+<mat-card matRipple (click)="itemsService.openItemPage(item)">
   <img mat-card-image src="{{item.images[0]}}" loading="lazy" alt="/assets/placeholder-image.png"> 
   <mat-card-title class="title">
     <div [ngClass]="{'marquee':(item.title.length > 9)}">

@@ -9,7 +9,19 @@
     </b>
   </div>
   <div class="section">
-    <app-item-card *ngFor="let item of itemsService.hotItems" [item]="item" (click)="openItemPage(item)"></app-item-card>
+    <ng-container *ngIf="itemsService.hotItems != null && itemsService.hotItems.length > 0">
+      <app-item-card *ngFor="let item of itemsService.hotItems" [item]="item"></app-item-card>
+    </ng-container>
+    <ng-container *ngIf="itemsService.hotItems == null">
+      <div class="placeholder">
+        TODO ADD SHIMMER
+      </div>
+    </ng-container>
+    <ng-container *ngIf="itemsService.hotItems.length == 0">
+      <div class="placeholder">
+        Nothing to show you :(
+    </div>
+    </ng-container>
   </div>
   <mat-divider [inset]="true"></mat-divider>
   <div class="categories-section">
@@ -27,7 +39,19 @@
     </b>
   </div>
     <div class="section">
-      <app-item-card *ngFor="let item of itemsService.followItems" [item]="item" (click)="openItemPage(item)"></app-item-card>
+      <ng-container *ngIf="itemsService.followItems != null && itemsService.followItems.length > 0">
+      <app-item-card *ngFor="let item of itemsService.followItems" [item]="item"></app-item-card>
+    </ng-container>
+    <ng-container *ngIf="itemsService.followItems == null">
+      <div class="placeholder">
+        TODO ADD SHIMMER
+      </div>
+    </ng-container>
+    <ng-container *ngIf="itemsService.followItems.length == 0">
+      <div class="placeholder">
+        Nothing to show you :(
+      </div>
+    </ng-container>
     </div>
   <mat-divider [inset]="true"></mat-divider>
   <div class="title-container">
@@ -39,7 +63,19 @@
     </b>
   </div>
   <div class="section">
-    <app-item-card-big *ngFor="let item of itemsService.interestItems" [item]="item" (click)="openItemPage(item)"></app-item-card-big>
+    <ng-container *ngIf="itemsService.interestItems != null && itemsService.interestItems.length > 0">
+      <app-item-card *ngFor="let item of itemsService.interestItems" [item]="item"></app-item-card>
+    </ng-container>
+    <ng-container *ngIf="itemsService.interestItems == null">
+      <div class="placeholder">
+        TODO ADD SHIMMER
+      </div>
+    </ng-container>
+    <ng-container *ngIf="itemsService.interestItems.length == 0">
+      <div class="placeholder">
+        Nothing to show you :(
+      </div>
+    </ng-container>
   </div>
 </div>
 

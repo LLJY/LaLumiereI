@@ -74,6 +74,15 @@ $primary: map-get($theme, primary);
     top: 50%;
     transform: translate(50%, -50%);
 }
-ion-content{
-    height: 90%;
+.content{
+    height: 120%;
+    overflow-y: auto;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.button{
+    width: 45%;
 }

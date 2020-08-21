@@ -24,13 +24,5 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
 
   }
-  /**
-   * opens the page with the item
-   * @param item 
-   */
-  openItemPage(item: Item){
-    let navigationExtras: NavigationExtras = {state: {item: item}};
-    this.navController.navigateForward('/individual-item', navigationExtras);
-  }
 
 }

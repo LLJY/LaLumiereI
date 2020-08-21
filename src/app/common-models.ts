@@ -9,10 +9,14 @@ export function sleep(ms) {
 }
 
 export enum UserType{
-    ADMIN=0,
-    BUYER,
+    BUYER=0,
     SELLER,
+    ADMIN,
 }
 export class User{
-    constructor(public uid:string, public name: string, public email: string, public userType: UserType){}
+    constructor(public uid:string, public name: string, public email: string, public ImageURL: string, public userType: UserType){}
+}
+export class CommonValues{
+    static errorMessage = "Oops! Something went wrong!";
+    static snackBarDuration = 2000;
 }

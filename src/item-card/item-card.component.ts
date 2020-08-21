@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Item } from 'src/app/common-models';
+import { ItemsService } from 'src/app/items.service';
 
 @Component({
   selector: 'app-item-card',
@@ -8,7 +9,7 @@ import { Item } from 'src/app/common-models';
 })
 export class ItemCardComponent implements OnInit {
   @Input() item: Item;
-  constructor() { }
+  constructor(public itemsService: ItemsService) { }
 
   ngOnInit() {
   }

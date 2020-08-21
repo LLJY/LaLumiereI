@@ -3,7 +3,7 @@ $primary: map-get($theme, primary);
 $accent: map-get($theme, accent);
 @keyframes animate-item-open{
     from{
-        color: black;
+        color: white;
         padding: 3%;
         font-size: xx-large;
     }
@@ -35,7 +35,7 @@ $accent: map-get($theme, accent);
     }
     to{
         padding: 3%;
-        color: black;
+        color: white;
         font-size: xx-large;
     }
 }
@@ -67,6 +67,7 @@ $accent: map-get($theme, accent);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background-color: mat-color($primary, default);
 }
 .profile-button-img{
     width: 100%;
@@ -117,4 +118,8 @@ $accent: map-get($theme, accent);
 .menu-item-title{
     margin-left: 10%;
     font-size: 20px;
+}
+.cupertino-pane{
+    background-color: mat-color($primary, default);
+    color: white;
 }

@@ -8,6 +8,6 @@
     <div class="grid">
       <app-item-card-big class="item" *ngFor="let item of itemsService.sellerItems" [item]="item"></app-item-card-big>
     </div>
-    <button class="mat-fab" mat-fab><mat-icon>add</mat-icon></button>
+    <button class="mat-fab" mat-fab (click)="addClick()"><mat-icon>add</mat-icon></button>
   </div>
 </ion-app>

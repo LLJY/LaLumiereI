@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
-import * as admin from 'firebase-admin';
-import { async } from '@angular/core/testing';
-import { FirebaseApp } from '@angular/fire';
 import { AngularFireFunctions } from '@angular/fire/functions';
-import { UserInfo } from 'os';
 import { User } from './common-models';
 @Injectable({
   providedIn: 'root'
@@ -22,8 +18,8 @@ export class LoginSignUpService {
     try {
       var id: any = await this.firebase.getCurrentUser();
       this.userID = id.uid;
+      // get the user indo with the userID
       await this.getUserInfo();
-      // TODO get user information here.
       return true;
     } catch (ex) {
       return false;
@@ -38,7 +34,7 @@ export class LoginSignUpService {
   public signUp = async (email: string, password: string, username: string, fullName:string): Promise<string> => {
     try {
       await this.firebase.createUserWithEmailAndPassword(email, password);
-      // set a default profile uri
+      // set a default profile image uri
       await this.firebase.updateUserProfile({ name: username, photoUri: "https://www.clipartmax.com/png/full/171-1717870_prediction-clip-art.png" });
       await this.firebase.signOutUser();
       return "success";
