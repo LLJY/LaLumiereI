@@ -1,10 +1,9 @@
-<ion-app>
   <ion-slides class="slides">
     <ion-slide *ngFor="let image of item.images">
       <img class="image" src={{image}}>
     </ion-slide>
   </ion-slides>
-  <div class="content">
+  <ion-content>
     <div class="information">
       <b>
         <p class="title">
@@ -91,8 +90,8 @@
     <div class="see-more-section">
 
     </div>
-   
-  </div>
+  </ion-content>
+
   <!-- TODO USE NGIF TO OPEN EDIT DIALOG -->
   <div class="bottom-pane">
     <button mat-button (click)="onBackPressed()">
@@ -110,4 +109,3 @@
     </div>
     </ng-template>
   </div>
-</ion-app>

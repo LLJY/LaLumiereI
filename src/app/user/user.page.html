@@ -1,0 +1,62 @@
+<ion-app>
+
+  <div class="content">
+    <form [formGroup]="form" >
+
+      <div class="reactive-form">
+
+        <img *ngIf="imageBase64==null" [src]="loginService.userInfo.ImageURL" class="profile-image" (click)="selectImage()">
+        <img *ngIf="imageBase64!=null" [src]="imageBase64" class="profile-image" (click)="selectImage()">
+        <mat-divider></mat-divider>
+        <mat-slide-toggle class="profile-toggle" (change)="enableUserForm(userFormChecked)" [checked]="userFormChecked">Enable Edit</mat-slide-toggle>
+
+        <mat-form-field appearance="outline">
+          
+          <mat-label>Username</mat-label>
+
+          <input matInput formControlName="username" [(ngModel)]="modifiedUser.username">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>Name</mat-label>
+
+          <input matInput formControlName="name" [(ngModel)]="modifiedUser.name">
+
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          
+          <mat-label>About</mat-label>
+
+          <input matInput [(ngModel)]="modifiedUser.about" placeholder="Describe yourself" [ngModelOptions]="{standalone: true}">
+
+        </mat-form-field>
+        <button mat-stroked-button (click)="updateUser()">
+          DONE
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+  <div class="bottom-pane">
+      <button mat-button (click)="onBackPressed()" class="back-button">
+        <mat-icon>
+          arrow_back
+        </mat-icon>
+      </button>
+      <div class="pane-title">
+        Hi, {{modifiedUser.username}}
+      </div>
+      <button mat-button (click)="signOut()" class="signout-button">
+        <mat-icon color="warn">
+          power_settings_new
+        </mat-icon>
+      </button>    
+  </div>
+  
+
+</ion-app>

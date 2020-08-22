@@ -1,0 +1,20 @@
+<ion-content class="content">
+  <div class="grid">
+    <app-item-card-big *ngFor="let item of items" [item]="item"></app-item-card-big>
+  </div>
+</ion-content>
+<div class="bottom-pane">
+  <button mat-button (click)="onBackPressed()" class="back-button">
+    <mat-icon>
+      arrow_back
+    </mat-icon>
+  </button>
+  <span class="pane-title">
+    {{title}}
+  </span>
+  <button mat-icon-button class="back-button">
+    <mat-icon>
+      playlist_add
+    </mat-icon>
+  </button>
+</div>

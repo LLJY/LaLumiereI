@@ -1,14 +1,15 @@
-import { Injectable } from "@angular/core";
+import { Injectable, NgZone } from "@angular/core";
 import { Item, sleep } from "./common-models";
 import { async } from "@angular/core/testing";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { LoginSignUpService } from "./login-sign-up.service";
 import { AngularFireFunctions } from "@angular/fire/functions";
 import { NavigationExtras } from "@angular/router";
-import { NavController } from "@ionic/angular";
+import { NavController, LoadingController } from "@ionic/angular";
 import { CustomNavigationService } from "./custom-navigation.service";
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: "root",
@@ -33,7 +34,10 @@ export class ItemsService {
     private loginService: LoginSignUpService,
     private functions: AngularFireFunctions,
     private customNav: CustomNavigationService,
-    private fireStorage: AngularFirestore
+    private fireStorage: AngularFirestore,
+    private ngZone: NgZone,
+    private snackbar: MatSnackBar,
+    private loadingController: LoadingController
   ) {
     this.defaultHeaders.delete("content-type");
     // when the snapshot updates, update the items as well.
@@ -124,10 +128,13 @@ export class ItemsService {
    * Get suggested items by the backend
    */
   getInterestItems = async () => {
+    // i will only comment this one. Call the cloud function.
     let request = this.functions.httpsCallable("getItemBySuggestion");
+    // Send the cloud function the needed parameters amd await the function after converting it to a promise
     let unProcessed = await request({
       userID: this.loginService.userID,
     }).toPromise();
+    // serialize the item into a usable object and assign it to the respective arrays.
     this.interestItems = this.processItemJson(unProcessed);
   };
   /**
@@ -245,6 +252,9 @@ export class ItemsService {
       throw ex;
     }
   };
+  /**
+   * Get items liked by the user.
+   */
   getLikedItems = async () => {
     let addMessage = this.functions.httpsCallable("getLikedItems");
     let unProcessed = await addMessage({
@@ -252,4 +262,29 @@ export class ItemsService {
     }).toPromise();
     this.likedItems = this.processItemJson(unProcessed);
   };
+/**
+ * Opens more items page with the selected category
+ * @param category Selected category
+ */
+  openCategoryItemsPage = async(category: string)=>{
+    // in other news why the fuck do i have to await a function meant for showing during async functions????
+    let loading = (await this.loadingController.create({message: "Loading..."}));
+    loading.present();
+    let request = this.functions.httpsCallable("getItemsByCategory");
+    let unProcessed = await request({
+      userID: this.loginService.userID,
+      category: category
+    }).toPromise();
+    let categoryItems = this.processItemJson(unProcessed);
+    // run this in ngZone because we are in an async function
+    this.ngZone.run(zone=>{
+      loading.dismiss();
+      if(categoryItems.length > 0){
+        this.customNav.forward('/more-items', {state: {title: category, items: categoryItems}});
+      }else{
+        this.snackbar.open("Sorry! No items found!", undefined, {duration: 2000});
+      }
+    });
+    
+  }
 }
