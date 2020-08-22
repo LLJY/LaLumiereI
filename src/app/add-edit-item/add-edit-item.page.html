@@ -1,6 +1,7 @@
 <ion-app>
   <div class="content">
-    <div class="images">
+    <!-- only allow to modify images when adding. -->
+    <div class="images" *ngIf="item == null">
       <ng-container *ngIf="modifiedItem.images.length > 0; else noImageBlock;">
         <img class="post-images" *ngFor="let imageBase64 of modifiedItem.images let i=index" [src]="imageBase64" (click)="deleteImage(i)">
       </ng-container>
@@ -32,11 +33,11 @@
         </mat-radio-group>          
         <mat-form-field appearance="outline">
           <mat-label>Price</mat-label>
-          <input matInput formControlName="price" [(ngModel)]="modifiedItem.price">
+          <input matInput formControlName="price" [(ngModel)]="modifiedItem.price" type="number">
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Available Stock</mat-label>
-          <input matInput formControlName="stock" [(ngModel)]="modifiedItem.stock">
+          <input matInput formControlName="stock" [(ngModel)]="modifiedItem.stock" type="number">
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>

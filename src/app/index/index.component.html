@@ -5,30 +5,36 @@
       <span class="title">
         Hot Items 🔥
       </span>
-      <button class="more-button" mat-button color="primary" [disabled]="itemsService.hotItems.length == 0" (click)="moreHot()">MORE...</button>
+      <button class="more-button" mat-button color="primary" [disabled]="itemsService.hotItems == null || itemsService.hotItems.length == 0"
+        (click)="moreHot()">MORE...</button>
     </b>
   </div>
   <div class="section">
     <!-- only show 7 items here -->
-    <ng-container *ngIf="itemsService.hotItems != null && itemsService.hotItems.length > 0">
-      <ng-container *ngFor="let item of itemsService.hotItems let i = index">
-        <app-item-card *ngIf="i<7" [item]="item"></app-item-card>
-      </ng-container>
-    </ng-container>
-    <ng-container *ngIf="itemsService.hotItems == null">
+    <ng-container *ngIf="itemsService.hotItems == null; else validHotBlock">
       <div class="placeholder">
-        TODO ADD SHIMMER
+        <app-item-skeleton></app-item-skeleton>
+        <app-item-skeleton></app-item-skeleton>
+        <app-item-skeleton></app-item-skeleton>
       </div>
     </ng-container>
-    <ng-container *ngIf="itemsService.hotItems.length == 0">
-      <div class="placeholder">
-        Nothing to show you :(
-    </div>
-    </ng-container>
+    <ng-template #validHotBlock>
+      <ng-container *ngIf="itemsService.hotItems != null && itemsService.hotItems.length > 0">
+        <ng-container *ngFor="let item of itemsService.hotItems let i = index">
+          <app-item-card *ngIf="i<7" [item]="item"></app-item-card>
+        </ng-container>
+        <ng-container *ngIf="itemsService.hotItems.length == 0">
+          <div class="placeholder">
+            Nothing to show you :(
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-template>
   </div>
   <mat-divider [inset]="true"></mat-divider>
   <div class="categories-section">
-    <mat-card matRipple class="category" *ngFor="let category of itemsService.categories" (click)="itemsService.openCategoryItemsPage(category)">
+    <mat-card matRipple class="category" *ngFor="let category of itemsService.categories"
+      (click)="itemsService.openCategoryItemsPage(category)">
       <mat-card-title class="category-title">{{category}}</mat-card-title>
     </mat-card>
   </div>
@@ -38,55 +44,67 @@
       <span class="title">
         People you follow 👀
       </span>
-      <button class="more-button-follow" mat-button color="primary" [disabled]="itemsService.followItems.length == 0" (click)="moreFollow()">MORE...</button>
+      <button class="more-button-follow" mat-button color="primary" [disabled]="itemsService.followItems == null || itemsService.followItems.length == 0"
+        (click)="moreFollow()">MORE...</button>
     </b>
   </div>
-    <div class="section">
+  <div class="section">
+    <ng-container *ngIf="itemsService.followItems == null; else validFollowBlock">
+      <div class="placeholder">
+        <app-item-skeleton></app-item-skeleton>
+        <app-item-skeleton></app-item-skeleton>
+        <app-item-skeleton></app-item-skeleton>
+      </div>
+    </ng-container>
+    <ng-template #validFollowBlock>
       <ng-container *ngIf="itemsService.followItems != null && itemsService.followItems.length > 0">
         <ng-container *ngIf="itemsService.followItems != null && itemsService.followItems.length > 0">
           <ng-container *ngFor="let item of itemsService.followItems let i = index">
             <app-item-card *ngIf="i<7" [item]="item"></app-item-card>
           </ng-container>
         </ng-container>
-    </ng-container>
-    <ng-container *ngIf="itemsService.followItems == null">
-      <div class="placeholder">
-        TODO ADD SHIMMER
-      </div>
-    </ng-container>
-    <ng-container *ngIf="itemsService.followItems.length == 0">
-      <div class="placeholder">
-        Nothing to show you :(
-      </div>
-    </ng-container>
-    </div>
+      </ng-container>
+      <ng-container *ngIf="itemsService.followItems.length == 0">
+        <div class="placeholder">
+          Nothing to show you :(
+        </div>
+      </ng-container>
+    </ng-template>
+  </div>
   <mat-divider [inset]="true"></mat-divider>
   <div class="title-container">
     <b>
       <span class="title">
         Items you might be interested in 🤩
       </span>
-      <button class="more-button-interest" mat-button color="primary" [disabled]="itemsService.interestItems.length == 0" (click)="moreInterest()">MORE...</button>
+      <button class="more-button-interest" mat-button color="primary"
+        [disabled]="itemsService.interestItems == null || itemsService.interestItems.length == 0" (click)="moreInterest()">MORE...</button>
     </b>
   </div>
   <div class="section">
-    <ng-container *ngIf="itemsService.interestItems != null && itemsService.interestItems.length > 0">
+    <ng-container *ngIf="itemsService.interestItems == null; else validInterestBlock">
+      <div class="placeholder">
+        <app-item-skeleton></app-item-skeleton>
+        <app-item-skeleton></app-item-skeleton>
+        <app-item-skeleton></app-item-skeleton>
+      </div>
+    </ng-container>
+    <ng-template #validInterestBlock>
       <ng-container *ngIf="itemsService.interestItems != null && itemsService.interestItems.length > 0">
-        <ng-container *ngFor="let item of itemsService.interestItems let i = index">
-          <app-item-card *ngIf="i<7" [item]="item"></app-item-card>
+        <ng-container *ngIf="itemsService.interestItems != null && itemsService.interestItems.length > 0">
+          <ng-container *ngFor="let item of itemsService.interestItems let i = index">
+            <app-item-card *ngIf="i<7" [item]="item"></app-item-card>
+          </ng-container>
         </ng-container>
       </ng-container>
-    </ng-container>
-    <ng-container *ngIf="itemsService.interestItems == null">
-      <div class="placeholder">
-        TODO ADD SHIMMER
-      </div>
-    </ng-container>
-    <ng-container *ngIf="itemsService.interestItems.length == 0">
-      <div class="placeholder">
-        Nothing to show you :(
-      </div>
-    </ng-container>
+      <ng-container *ngIf="itemsService.interestItems.length == 0">
+        <div class="placeholder">
+          Nothing to show you :(
+        </div>
+      </ng-container>
+    </ng-template>
+
+    
   </div>
 </div>
 

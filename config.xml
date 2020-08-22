@@ -3,7 +3,7 @@
     <name>La Lumiere</name>
     <description>stupid fucking Ionic/Cordova app.</description>
     <author email="lucasljyy@gmail.com">Lucas Lee Jing Yi</author>
-    <content original-src="index.html" src="http://localhost:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

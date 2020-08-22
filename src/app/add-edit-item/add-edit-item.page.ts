@@ -84,7 +84,7 @@ export class AddEditItemPage implements OnInit, AfterViewInit {
    * Creates an action sheet to take from camera or load from library
    */
   selectImage = async () => {
-    if (this.modifiedItem.images.length <= 4) {
+    if (this.modifiedItem.images.length < 4) {
       const actionSheet = await this.actionSheetController.create({
         header: "Select Image source",
         buttons: [
@@ -108,6 +108,7 @@ export class AddEditItemPage implements OnInit, AfterViewInit {
       });
       await actionSheet.present();
     } else {
+      this.snackbar.open("You can only pick 4 images!", undefined, {duration: 2000});
     }
   };
   cropImage(imageData) {
@@ -140,7 +141,7 @@ export class AddEditItemPage implements OnInit, AfterViewInit {
         console.log(base64);
       })
       .catch((err) => {
-        // TODO SHOW SNACKBAR ERROR
+        this.snackbar.open(CommonValues.errorMessage, undefined, {duration: CommonValues.snackBarDuration});
         console.error(err);
       });
   }
@@ -214,8 +215,11 @@ export class AddEditItemPage implements OnInit, AfterViewInit {
     );
   }
   ngAfterViewInit() {
+    // it's normal to get an error here, just try catch.
+    try {
+      this.item = this.router.getCurrentNavigation().extras.state.item;
+    } catch (ex) {}
     // check if state exists
-    this.item = this.router.getCurrentNavigation().extras.state.item;
     if(this.item != null){
       this.modifiedItem = this.item;
     }

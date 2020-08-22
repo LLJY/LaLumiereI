@@ -26,10 +26,10 @@
       </mat-divider>
       <div class="user-liked">
         <button mat-icon-button>
-          <mat-icon *ngIf="item.isLiked" color="warn">
+          <mat-icon *ngIf="item.isLiked" color="warn" (click)="unLikeItem()">
             favorite
           </mat-icon>
-          <mat-icon *ngIf="!item.isLiked">
+          <mat-icon *ngIf="!item.isLiked"  (click)="likeItem()">
             favorite_outline
           </mat-icon>
         </button>

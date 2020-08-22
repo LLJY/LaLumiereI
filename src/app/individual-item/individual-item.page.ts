@@ -17,11 +17,9 @@ export class IndividualItemPage implements OnInit, AfterViewInit {
   public item: Item;
   constructor(private activeRoute: ActivatedRoute, private router: Router, public loginService: LoginSignUpService, private customNavigation: CustomNavigationService, private itemsService: ItemsService, public matDialog: MatDialog) {
     // get the parameters passed to it
-    activeRoute.queryParams.subscribe(params=>{
       if(router.getCurrentNavigation().extras.state){
         this.item = this.router.getCurrentNavigation().extras.state.item;
       }
-    });
    }
    onBackPressed(){
     this.customNavigation.back();
@@ -60,6 +58,20 @@ export class IndividualItemPage implements OnInit, AfterViewInit {
    public editItem(){
     let navigationExtras: NavigationExtras = { state: { item: this.item } };
     this.customNavigation.forward('/add-edit-item', navigationExtras);
+   }
+   /**
+    * Likes the item
+    */
+   public likeItem(){
+    this.item.isLiked = true;
+    this.itemsService.likeItem(this.item);
+   }
+   /**
+    * Removes the like
+    */
+   public unLikeItem(){
+    this.item.isLiked = false;
+    this.itemsService.likeItem(this.item);
    }
 
   ngOnInit() {

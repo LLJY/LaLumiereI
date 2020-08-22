@@ -21,6 +21,7 @@ import { IndexComponent } from '../index/index.component';
 import { ItemCardComponent } from 'src/item-card/item-card.component';
 import { ItemCardBigComponent } from '../item-card-big/item-card-big.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ItemSkeletonComponent } from '../item-skeleton/item-skeleton.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,6 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     HttpClientModule
   ],
-  declarations: [MainPage, ManageListingsComponent, TrackOrdersComponent, HomePage, InboxComponent,IndexComponent, LikedItemsComponent, SubscribedCategoriesComponent, SettingsComponent, AboutComponent, ItemCardComponent, ItemCardBigComponent]
+  declarations: [MainPage, ManageListingsComponent, TrackOrdersComponent, HomePage, InboxComponent,IndexComponent, LikedItemsComponent, SubscribedCategoriesComponent, SettingsComponent, AboutComponent, ItemCardComponent, ItemCardBigComponent, ItemSkeletonComponent]
 })
 export class MainPageModule { }

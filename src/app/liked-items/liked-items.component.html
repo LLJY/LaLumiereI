@@ -6,7 +6,17 @@
       </p>
     </b>
     <div class="grid">
+      <ng-container *ngIf="itemsService.likedItems != null else invalidBlock">
       <app-item-card-big class="item" *ngFor="let item of itemsService.likedItems" [item]="item"></app-item-card-big>
+    </ng-container>
+    <ng-template #invalidBlock>
+      <app-item-skeleton></app-item-skeleton>
+      <app-item-skeleton></app-item-skeleton>
+      <app-item-skeleton></app-item-skeleton>
+      <app-item-skeleton></app-item-skeleton>
+      <app-item-skeleton></app-item-skeleton>
+      <app-item-skeleton></app-item-skeleton>
+    </ng-template>
     </div>
   </div>
 </ion-app>

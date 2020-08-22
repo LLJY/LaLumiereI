@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Item } from '../common-models';
 import { LoginSignUpService } from '../login-sign-up.service';
 import { ItemsService } from '../items.service';
@@ -11,15 +11,10 @@ import { CustomNavigationService } from '../custom-navigation.service';
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent implements OnInit, AfterViewInit {
   // category
   categories: string[];
   constructor(loginService: LoginSignUpService, public itemsService: ItemsService, private customNav: CustomNavigationService) {
-    console.log(itemsService);
-    // call the get items function
-    itemsService.getItems().then(()=>{
-      //TODO remove shimmer
-    });
   }
   public moreHot(){
     this.customNav.forward('/more-items', {state: {title: "Hot Items", items: this.itemsService.hotItems}});
@@ -32,7 +27,11 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    // call the get items function
+    this.itemsService.getItems();
+  }
+  ngAfterViewInit(){
+    
   }
 
 }
