@@ -24,7 +24,6 @@ import { File } from '@ionic-native/file/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
 
 
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

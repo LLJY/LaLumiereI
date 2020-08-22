@@ -20,9 +20,33 @@ $primary: mat-palette($mat-indigo);
 $accent:  mat-palette($mat-pink);
 $warn:    mat-palette($mat-red);
 
-$theme: mat-light-theme($primary, $accent, $warn);
+$theme: mat-dark-theme($primary, $accent, $warn);
+$theme-dark: mat-dark-theme($primary, $accent, $warn);
+$theme-light: mat-light-theme($primary, $accent, $warn);
 
-@include angular-material-theme($theme);
+@include angular-material-theme($theme-light);
+@media (prefers-color-scheme: dark) {
+    @include angular-material-theme($theme-dark);
+    :root{
+        background-color: #303030;
+        color: white;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    @include angular-material-theme($theme-light);
+    :root{
+        background-color: white;
+        color: black;
+    }
+}
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/assets/fonts/Ubuntu-LightItalic.ttf')format("truetype");
+    font-weight: 100;
+    font-style: normal;
+  }
+
 .shimmer-animate{
     animation: shimmer 2s infinite;
     background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);

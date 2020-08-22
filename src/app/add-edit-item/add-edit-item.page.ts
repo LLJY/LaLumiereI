@@ -128,10 +128,10 @@ export class AddEditItemPage implements OnInit, AfterViewInit {
   }
   addImage(imagePath) {
     // get the file's url
-    var copyPath = imagePath;
-    var splitPath = copyPath.split("/");
-    var imageName = splitPath[splitPath.length - 1];
-    var filePath = imagePath.split(imageName)[0];
+    let copyPath = imagePath;
+    let splitPath = copyPath.split("/");
+    let imageName = splitPath[splitPath.length - 1];
+    let filePath = imagePath.split(imageName)[0];
     // convert the file to base64 and add it to the array.
     this.file
       .readAsDataURL(filePath, imageName)

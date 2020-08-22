@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsService } from '../items.service';
 
 @Component({
   selector: 'app-liked-items',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LikedItemsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public itemsService: ItemsService) {
 
-  ngOnInit() {}
+   }
+
+  ngOnInit() {
+    // get liked items on init.
+    this.itemsService.getLikedItems();
+  }
 
 }

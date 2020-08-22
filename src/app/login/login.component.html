@@ -1,9 +1,8 @@
-<html [@slide-login]>
-<ion-app>
+<ion-app [@slide-login]>
   <div id="page">
     <div id="app-title">
-      <img src="assets/icon.png">
-      <p class="primary-color" style="font-family: Bradley">
+      <img class="icon" src="assets/icon.png">
+      <p class="primary-color" class="app-title-text">
         La Lumière
       </p>
     </div>
@@ -33,9 +32,16 @@
         <button *ngIf="!isLoading" mat-button color="primary" class="signup-button" (click)="toSignUp()">
           NOT YET A MEMBER? JOIN US!
         </button>
+        <b  *ngIf="!isLoading" class="or">
+          <p>
+            OR
+          </p>
+        </b>
+        <button *ngIf="!isLoading" mat-raised-button class="google-button" (click)="loginGoogle()">
+          <img style="width: 20%; height:40%"
+                    src="assets/Google.svg"> Login With Google
+          </button>  
       </div>
     </form>
   </div>
 </ion-app>
-
-</html>

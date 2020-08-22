@@ -5,9 +5,9 @@
   <p class="top-arrow">^</p>
 </div>
 <div class="cupertino-pane">
-  
+  <!-- disable the button if userinfo is still null to prevent errors -->
   <div class="cupertino-pane-header">
-    <button mat-icon-button class="profile-button">
+    <button mat-icon-button class="profile-button" [disabled]="loginService.userInfo == null"  (click)="customNav.forward('/user')">
       <img class="profile-button-img"
         [src]="loginService.userInfo.ImageURL">
     </button>

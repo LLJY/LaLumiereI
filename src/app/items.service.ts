@@ -3,7 +3,6 @@ import { Item, sleep } from "./common-models";
 import { async } from "@angular/core/testing";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { LoginSignUpService } from "./login-sign-up.service";
-import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 import { AngularFireFunctions } from "@angular/fire/functions";
 import { NavigationExtras } from "@angular/router";
 import { NavController } from "@ionic/angular";
@@ -20,6 +19,7 @@ export class ItemsService {
   public hotItems: Array<Item>;
   public followItems: Array<Item>;
   public interestItems: Array<Item>;
+  public likedItems: Array<Item>;
   public sellerItems: Array<Item>;
   public categories: string[];
   public paymentTypes: string[];
@@ -244,5 +244,12 @@ export class ItemsService {
       console.error(ex);
       throw ex;
     }
+  };
+  getLikedItems = async () => {
+    let addMessage = this.functions.httpsCallable("getLikedItems");
+    let unProcessed = await addMessage({
+      userID: this.loginService.userID,
+    }).toPromise();
+    this.likedItems = this.processItemJson(unProcessed);
   };
 }

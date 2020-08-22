@@ -14,7 +14,7 @@ export enum UserType{
     ADMIN,
 }
 export class User{
-    constructor(public uid:string, public name: string, public email: string, public ImageURL: string, public userType: UserType){}
+    constructor(public uid:string, public name: string, public username:string, public email: string, public ImageURL: string, public userType: UserType, public about: string){}
 }
 export class CommonValues{
     static errorMessage = "Oops! Something went wrong!";
