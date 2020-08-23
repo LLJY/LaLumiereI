@@ -18,7 +18,7 @@ import { SubscribedCategoriesComponent } from '../subscribed-categories/subscrib
 import { SettingsComponent } from '../settings/settings.component';
 import { AboutComponent } from '../about/about.component';
 import { IndexComponent } from '../index/index.component';
-import { ItemCardComponent } from 'src/item-card/item-card.component';
+import { ItemCardComponent } from '../item-card/item-card.component';
 import { ItemCardBigComponent } from '../item-card-big/item-card-big.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ItemSkeletonComponent } from '../item-skeleton/item-skeleton.component';

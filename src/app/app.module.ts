@@ -15,7 +15,7 @@ import {
   AngularFireFunctionsModule, REGION,
 } from '@angular/fire/functions';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
-import { ItemCardComponent } from 'src/item-card/item-card.component';
+import { ItemCardComponent } from './item-card/item-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
