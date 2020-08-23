@@ -64,6 +64,7 @@ export class IndividualItemPage implements OnInit, AfterViewInit {
     */
    public likeItem(){
     this.item.isLiked = true;
+    this.item.Likes++;
     this.itemsService.likeItem(this.item);
    }
    /**
@@ -71,7 +72,8 @@ export class IndividualItemPage implements OnInit, AfterViewInit {
     */
    public unLikeItem(){
     this.item.isLiked = false;
-    this.itemsService.likeItem(this.item);
+    this.item.Likes--;
+    this.itemsService.unLikeItem(this.item);
    }
 
   ngOnInit() {

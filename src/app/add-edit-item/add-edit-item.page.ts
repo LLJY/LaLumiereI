@@ -138,7 +138,6 @@ export class AddEditItemPage implements OnInit, AfterViewInit {
       .readAsDataURL(filePath, imageName)
       .then((base64) => {
         this.modifiedItem.images.push(base64);
-        console.log(base64);
       })
       .catch((err) => {
         this.snackbar.open(CommonValues.errorMessage, undefined, {duration: CommonValues.snackBarDuration});
@@ -245,14 +244,12 @@ export class AddEditItemPage implements OnInit, AfterViewInit {
             // if positive response, add the item
             if (value) {
               this.itemsService.addItem(this.modifiedItem).then(result=>{
-                if(result == "success"){
                   this.snackbar.open("Success!", undefined, this.snackConfig);
                   // go back
                   this.customNav.back();
-                }else{
-                  // show error message
-                  this.snackbar.open(CommonValues.errorMessage, undefined, this.snackConfig);
-                }
+            }).catch(err=>{
+               // show error message
+              this.snackbar.open(CommonValues.errorMessage, undefined, this.snackConfig);
             });
           }
         });

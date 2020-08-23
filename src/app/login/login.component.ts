@@ -24,7 +24,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   ],
 })
 export class LoginComponent implements OnInit {
-  private form: FormGroup;
+  public form: FormGroup;
   isLoading = false;
   constructor(
     private fb: FormBuilder,
